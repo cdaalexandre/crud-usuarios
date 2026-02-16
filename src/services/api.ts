@@ -1,6 +1,8 @@
 import { User } from '../types';
 
-const API_URL = 'http://localhost:3000/api/users';
+const API_URL = import.meta.env.VITE_API_URL
+  ? `${import.meta.env.VITE_API_URL}/api/users`
+  : 'http://localhost:3000/api/users';
 
 export const api = {
   // Listar todos os usuários

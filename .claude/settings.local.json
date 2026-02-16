@@ -11,7 +11,16 @@
       "Bash(netstat:*)",
       "Bash(taskkill:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(winget install:*)",
+      "Bash(gh:*)",
+      "Bash(/c/Program Files/GitHub CLI/gh.exe --version)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" --version)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth login)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo create crud-usuarios --public --source=. --remote=origin --description=\"CRUD de Usuários com React + TypeScript + Node.js + SQLite\" --push)",
+      "Bash(git push:*)"
     ]
   }
 }
