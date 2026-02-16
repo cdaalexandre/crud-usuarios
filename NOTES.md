@@ -612,7 +612,7 @@ gh auth login
 ```
 
 **Fluxo:**
-1. CLI gera código: `D456-61EB`
+1. CLI gera código: `XXXX-XXXX`
 2. Usuário acessa: https://github.com/login/device
 3. Cola código e autoriza
 4. CLI recebe token de acesso
@@ -620,7 +620,7 @@ gh auth login
 **Resultado:**
 ```
 ✓ Authentication complete.
-✓ Logged in as cdaalexandre
+✓ Logged in as your-username
 ```
 
 ### 5.3 Inicialização do Git
@@ -660,7 +660,7 @@ gh repo create crud-usuarios \
 - `--push`: Faz push automático após criar
 
 **Resultado:**
-- URL: https://github.com/cdaalexandre/crud-usuarios
+- URL: https://github.com/your-username/crud-usuarios
 - Branch master configurada com tracking
 
 ---
@@ -681,7 +681,7 @@ gh repo create crud-usuarios \
 
 **Criação via API:**
 ```bash
-gh api repos/cdaalexandre/crud-usuarios/pages \
+gh api repos/your-username/crud-usuarios/pages \
   -X POST \
   -f "build_type=workflow"
 ```
@@ -693,8 +693,8 @@ gh api repos/cdaalexandre/crud-usuarios/pages \
 **Resultado:**
 ```json
 {
-  "url": "https://api.github.com/repos/cdaalexandre/crud-usuarios/pages",
-  "html_url": "https://cdaalexandre.github.io/crud-usuarios/",
+  "url": "https://api.github.com/repos/your-username/crud-usuarios/pages",
+  "html_url": "https://your-username\.github\.io/crud-usuarios/",
   "build_type": "workflow",
   "https_enforced": true
 }
@@ -734,7 +734,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_URL: https://crud-usuarios-api-65jm.onrender.com
+          VITE_API_URL: https://your-app-name\.onrender\.com
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -807,8 +807,8 @@ Resposta:
 ```json
 [{
   "owner": {
-    "id": "tea-d697cph5pdvs738d4270",
-    "email": "alexandre.calzetta@cs.unicid.edu.br",
+    "id": "tea-YOUR_OWNER_ID",
+    "email": "seu-email@example.com",
     "type": "team"
   }
 }]
@@ -822,8 +822,8 @@ curl -X POST https://api.render.com/v1/services \
   -d '{
     "type": "web_service",
     "name": "crud-usuarios-api",
-    "ownerId": "tea-d697cph5pdvs738d4270",
-    "repo": "https://github.com/cdaalexandre/crud-usuarios",
+    "ownerId": "tea-YOUR_OWNER_ID",
+    "repo": "https://github.com/your-username/crud-usuarios",
     "autoDeploy": "yes",
     "branch": "master",
     "buildCommand": "npm install",
@@ -848,14 +848,14 @@ curl -X POST https://api.render.com/v1/services \
 ```json
 {
   "service": {
-    "id": "srv-d697eb248b3s73b0nqvg",
+    "id": "srv-YOUR_SERVICE_ID",
     "name": "crud-usuarios-api",
-    "url": "https://crud-usuarios-api-65jm.onrender.com",
+    "url": "https://your-app-name\.onrender\.com",
     "autoDeploy": "yes",
     "region": "oregon",
     "plan": "free"
   },
-  "deployId": "dep-d697ebi48b3s73b0nr40"
+  "deployId": "dep-YOUR_DEPLOY_ID"
 }
 ```
 
@@ -909,7 +909,7 @@ services:
 
 **Problema:**
 - Frontend estava configurado para `http://localhost:3000`
-- Produção precisa usar `https://crud-usuarios-api-65jm.onrender.com`
+- Produção precisa usar `https://your-app-name\.onrender\.com`
 
 **Solução - Variável de ambiente:**
 
@@ -926,30 +926,30 @@ const API_URL = import.meta.env.VITE_API_URL
   - Usa `http://localhost:3000/api/users`
 
 - **Produção** (GitHub Actions):
-  - Define `VITE_API_URL=https://crud-usuarios-api-65jm.onrender.com`
-  - Usa `https://crud-usuarios-api-65jm.onrender.com/api/users`
+  - Define `VITE_API_URL=https://your-app-name\.onrender\.com`
+  - Usa `https://your-app-name\.onrender\.com/api/users`
 
 **Atualização do workflow:**
 ```yaml
 - name: Build
   run: npm run build
   env:
-    VITE_API_URL: https://crud-usuarios-api-65jm.onrender.com
+    VITE_API_URL: https://your-app-name\.onrender\.com
 ```
 
 ### 6.8 Teste Final
 
 **Backend:**
 ```bash
-$ curl https://crud-usuarios-api-65jm.onrender.com
+$ curl https://your-app-name\.onrender\.com
 {"message":"API CRUD de Usuários - Funcionando! 🚀"}
 
-$ curl https://crud-usuarios-api-65jm.onrender.com/api/users
+$ curl https://your-app-name\.onrender\.com/api/users
 [{"id":1,"nome":"João Silva",...},...]
 ```
 
 **Frontend:**
-- URL: https://cdaalexandre.github.io/crud-usuarios/
+- URL: https://your-username\.github\.io/crud-usuarios/
 - Carrega interface React
 - Faz requisições para backend Render
 - CRUD completo funcionando
@@ -961,7 +961,7 @@ $ curl https://crud-usuarios-api-65jm.onrender.com/api/users
 ### 7.1 Problema de Segurança
 
 **Risco:**
-- Token da API do Render (`rnd_16VVD43h7FR5JGY1VwlNy9xT6c3y`) usado durante setup
+- Token da API do Render (`rnd_YOUR_RENDER_API_KEY_HERE`) usado durante setup
 - Se commitado no Git, fica público no GitHub
 - Qualquer pessoa poderia usar o token para:
   - Criar/deletar serviços
@@ -979,17 +979,17 @@ Conteúdo:
 # CREDENCIAIS - NÃO COMMITAR NO GIT
 
 ## Render.com
-RENDER_API_KEY=rnd_16VVD43h7FR5JGY1VwlNy9xT6c3y
-RENDER_SERVICE_ID=srv-d697eb248b3s73b0nqvg
-RENDER_OWNER_ID=tea-d697cph5pdvs738d4270
+RENDER_API_KEY=rnd_YOUR_RENDER_API_KEY_HERE
+RENDER_SERVICE_ID=srv-YOUR_SERVICE_ID
+RENDER_OWNER_ID=tea-YOUR_OWNER_ID
 
 ## URLs de Produção
-FRONTEND_URL=https://cdaalexandre.github.io/crud-usuarios/
-BACKEND_URL=https://crud-usuarios-api-65jm.onrender.com
+FRONTEND_URL=https://your-username\.github\.io/crud-usuarios/
+BACKEND_URL=https://your-app-name\.onrender\.com
 
 ## GitHub
-REPO_URL=https://github.com/cdaalexandre/crud-usuarios
-GITHUB_USERNAME=cdaalexandre
+REPO_URL=https://github.com/your-username/crud-usuarios
+GITHUB_USERNAME=your-username
 ```
 
 **2. Adicionar ao `.gitignore`**
@@ -1178,7 +1178,7 @@ app.use(cors());  // Permite todas as origens
 **Produção (mais restritivo):**
 ```javascript
 app.use(cors({
-  origin: 'https://cdaalexandre.github.io',
+  origin: 'https://your-username\.github\.io',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 ```
@@ -1606,7 +1606,7 @@ base: '/crud-usuarios/',  // Nome do repo
 ```javascript
 // Cron job simples (separado)
 setInterval(() => {
-  fetch('https://crud-usuarios-api-65jm.onrender.com');
+  fetch('https://your-app-name\.onrender\.com');
 }, 10 * 60 * 1000);  // 10 minutos
 ```
 
@@ -1656,10 +1656,10 @@ Este documento captura todo o processo de criação do CRUD de Usuários, desde 
 - ✅ Documentação completa (CLAUDE.md, README.md, NOTES.md)
 
 **URLs finais:**
-- **Aplicação**: https://cdaalexandre.github.io/crud-usuarios/
-- **API**: https://crud-usuarios-api-65jm.onrender.com
-- **Código**: https://github.com/cdaalexandre/crud-usuarios
+- **Aplicação**: https://your-username\.github\.io/crud-usuarios/
+- **API**: https://your-app-name\.onrender\.com
+- **Código**: https://github.com/your-username/crud-usuarios
 
-**Mantido por:** Alexandre Calzetta (cdaalexandre)
+**Mantido por:** Alexandre Calzetta (your-username)
 **Data:** 16 de fevereiro de 2026
 **Versão:** 1.0.0
