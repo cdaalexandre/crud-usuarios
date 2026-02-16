@@ -2,10 +2,15 @@
 
 Sistema completo de gerenciamento de usuários com operações CRUD (Create, Read, Update, Delete).
 
-## 🚀 Demo
+## 🚀 Deploy Rápido
+
+[![Deploy Frontend to GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://github.com/cdaalexandre/crud-usuarios/actions)
+[![Deploy Backend to Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/cdaalexandre/crud-usuarios)
+
+## 🌐 Demo
 
 - **Frontend (GitHub Pages):** https://cdaalexandre.github.io/crud-usuarios/
-- **Backend API (Render):** https://crud-usuarios-api.onrender.com
+- **Backend API (Render):** _Clique no botão acima para fazer deploy_
 
 ## 🛠️ Tecnologias
 
