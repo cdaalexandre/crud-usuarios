@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_URL: https://crud-usuarios-api.onrender.com
+          VITE_API_URL: https://crud-usuarios-api-65jm.onrender.com
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
