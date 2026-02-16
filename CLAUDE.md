@@ -177,6 +177,41 @@ npm install -D package-name        # Development dependency
 - CORS enabled for cross-origin requests
 - Error messages don't expose sensitive information
 
+## Credenciais e Configurações
+
+### Arquivo de Credenciais
+As credenciais sensíveis estão armazenadas localmente em `.credentials` (não versionado no Git).
+
+Para acessar:
+```bash
+cat .credentials
+```
+
+**Contém:**
+- Token da API do Render
+- IDs de serviços
+- URLs de produção
+- Links úteis
+
+**IMPORTANTE:** Nunca commite este arquivo. Ele está no `.gitignore`.
+
+### Informações de Deploy
+
+**Frontend (GitHub Pages):**
+- URL: https://cdaalexandre.github.io/crud-usuarios/
+- Deploy automático via GitHub Actions
+- Configuração: `.github/workflows/deploy.yml`
+
+**Backend (Render.com):**
+- URL: https://crud-usuarios-api-65jm.onrender.com
+- Dashboard: https://dashboard.render.com/web/srv-d697eb248b3s73b0nqvg
+- Deploy automático ao fazer push na branch master
+- Configuração: `render.yaml`
+
+**Repositório:**
+- GitHub: https://github.com/cdaalexandre/crud-usuarios
+- Owner: cdaalexandre
+
 ## Troubleshooting
 
 ### Backend not connecting
